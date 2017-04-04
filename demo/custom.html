@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//unpkg.com/react/dist/react.min.js"></script>
+    <script src="//unpkg.com/react-dom/dist/react-dom.min.js"></script>
+    <script src="//unpkg.com/mobx/lib/mobx.umd.min.js"></script>
+    <script src="//unpkg.com/mobx-react/index.min.js"></script>
+    <script src="../umd/mobx-respond.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #root {
+            color: white;
+        }
+
+        #root > div {
+            width: 500px;
+            height: 500px;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .red {
+            background: red;
+        }
+
+        .green {
+            background: green !important;
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  let respond = new mobxRespond.Respond({enough: [500, null, 500, null], large: [600, null, 600]}); // need 400 * 400
+  window.respond = respond;
+  let Demo = mobxReact.observer(React.createClass({
+    render: () => {
+      return React.createElement('div', {className: (respond.enough ? 'blue' : 'red') + (respond.large ? ' green' : '')}, 'Resize window to see the change the color of the square');
+    }
+  }));
+  ReactDOM.render(React.createElement(Demo), document.getElementById('root'));
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//unpkg.com/react/dist/react.min.js"></script>
+    <script src="//unpkg.com/react-dom/dist/react-dom.min.js"></script>
+    <script src="//unpkg.com/mobx/lib/mobx.umd.min.js"></script>
+    <script src="//unpkg.com/mobx-react/index.min.js"></script>
+    <script src="../umd/mobx-respond.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  let respond = new mobxRespond.Respond();
+  window.respond = respond;
+  let Demo = mobxReact.observer(React.createClass({
+    render: () => {
+      return React.createElement('div', null, 'current size:' + (() => {
+          if (respond.xs) {
+            return 'xs';
+          } else if (respond.sm) {
+            return 'sm';
+          } else if (respond.md) {
+            return 'md';
+          } else if (respond.lg) {
+            return 'lg';
+          } else {
+            return 'unknow';
+          }
+        })());
+    }
+  }));
+  ReactDOM.render(React.createElement(Demo), document.getElementById('root'));
+</script>
+</body>
+</html>
