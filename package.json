@@ -1,6 +1,6 @@
 {
   "name": "mobx-respond",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "index.js",
   "repository": "zjuasmn/mobx-respond",
   "author": "zjuasmn <zjuasmn@gmail.com>",
